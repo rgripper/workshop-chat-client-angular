@@ -4,10 +4,12 @@ import { ChatData } from 'messaging/chat-data';
 import { ChatState, ChatStateType, initialChatState } from './state';
 
 export enum ChatActionType {
-  Left,
-  JoinInProgress,
-  JoinResultReceived, 
-  MessageReceived, UserJoined, UserLeft
+  Left = 'ChatActionType.Left',
+  JoinInProgress = 'ChatActionType.JoinInProgress',
+  JoinResultReceived = 'ChatActionType.JoinResultReceived', 
+  MessageReceived = 'ChatActionType.MessageReceived', 
+  UserJoined = 'ChatActionType.UserJoined', 
+  UserLeft = 'ChatActionType.UserLeft'
 }
 
 export type ChatAction =

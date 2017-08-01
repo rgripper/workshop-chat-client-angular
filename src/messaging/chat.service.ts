@@ -1,8 +1,8 @@
 import * as io from 'socket.io-client';
-import { Message } from './Message';
-import { SubmittedMessage } from './SubmittedMessage';
+import { Message } from './message';
+import { SubmittedMessage } from './submitted-message';
 import { User } from './User';
-import { ChatData } from "./ChatData";
+import { ChatData } from "./chat-data";
 
 export interface ChatDataHandler {
     handleJoinResult: (x: JoinResult) => void,

@@ -7,7 +7,10 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
     "target": "es5",
+    "strict": true,
     "baseUrl": "src",
     "typeRoots": [
       "node_modules/@types"

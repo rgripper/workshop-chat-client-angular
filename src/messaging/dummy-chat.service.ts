@@ -1,7 +1,7 @@
-import { ChatState, ChatStateType } from "store/app/chat/ChatState";
-import { ChatDataHandler } from "./ChatService";
-import { Message } from './Message';
-import { SubmittedMessage } from './SubmittedMessage';
+import { ChatState, ChatStateType } from "store/app/chat/state";
+import { ChatDataHandler } from "./chat.service";
+import { Message } from './message';
+import { SubmittedMessage } from './submitted-message';
 
 export class DummyChatService {
 
