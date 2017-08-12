@@ -4,5 +4,5 @@ import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
   { path: 'account/login', component: LoginComponent },
-  { path: 'chat',      component: ChatComponent },
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
 ];
