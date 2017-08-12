@@ -1,4 +1,4 @@
-import { ChatData } from "messaging/chat-data";
+import { ChatData } from "messaging/chat-data"
 
 export enum ChatStateType { AuthenticationFailed, AuthenticatedAndInitialized, NotAuthenticated, Authenticating }
 
@@ -15,7 +15,11 @@ export type ChatState =
     }
     | {
         readonly type: ChatStateType.AuthenticationFailed,
-        readonly errorMessage: string
+        readonly message: string
     }
 
-export const initialChatState: ChatState = { type: ChatStateType.NotAuthenticated };
+export const ChatState = {
+    Initial: {
+        type: ChatStateType.NotAuthenticated
+    } as ChatState
+}

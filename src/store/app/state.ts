@@ -1,7 +1,11 @@
-import { ChatState, initialChatState } from "./chat/state";
-
-export const initialAppState: AppState = { chatState: initialChatState };
+import { ChatState } from "./chat/state"
 
 export interface AppState {
-  readonly chatState: ChatState,
+  readonly chat: ChatState,
+}
+
+export const AppState = {
+  Initial: { 
+    chat: ChatState.Initial 
+  } as AppState
 }

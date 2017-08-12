@@ -1,7 +1,7 @@
 import { Message } from 'messaging/message';
 import { User } from 'messaging/user';
 import { ChatData } from 'messaging/chat-data';
-import { ChatState, ChatStateType, initialChatState } from './state';
+import { ChatState, ChatStateType } from './state';
 
 export enum ChatActionType {
   Left = 'ChatActionType.Left',
@@ -36,12 +36,12 @@ export type ChatAction =
     payload: { userName: string }
   }
 
-export function chatStateReducer (state: ChatState = initialChatState, action: ChatAction) {
+export function chatStateReducer (state: ChatState = ChatState.Initial, action: ChatAction): ChatState {
   switch (action.type) {
     case ChatActionType.Left:
-      return { type: ChatStateType.NotAuthenticated } as ChatState;
+      return { type: ChatStateType.NotAuthenticated };
     case ChatActionType.JoinInProgress:
-      return { type: ChatStateType.Authenticating } as ChatState;
+      return { type: ChatStateType.Authenticating };
     case ChatActionType.JoinResultReceived:
       return action.payload.chatState;
     case ChatActionType.MessageReceived: {
@@ -64,4 +64,4 @@ export function chatStateReducer (state: ChatState = initialChatState, action: C
   }
 
 
-};
+}
