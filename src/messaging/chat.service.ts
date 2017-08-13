@@ -1,14 +1,14 @@
-import * as io from 'socket.io-client';
-import { Message } from './message';
-import { SubmittedMessage } from './submitted-message';
-import { User } from './User';
-import { ChatData } from "./chat-data";
+import * as io from 'socket.io-client'
+import { Message } from './message'
+import { SubmittedMessage } from './submitted-message'
+import { User } from './User'
+import { ChatData } from "./chat-data"
 
 export interface ChatDataHandler {
-    handleJoinResult: (x: JoinResult) => void,
-    handleUserJoined: (x: User) => void,
-    handleUserReft: (userName: string) => void,
-    handleMessageReceived: (x: Message) => void,
+    handleJoinResult: (x: JoinResult) => void
+    handleUserJoined: (x: User) => void
+    handleUserReft: (userName: string) => void
+    handleMessageReceived: (x: Message) => void
 }
 
 type CustomServerEvent =

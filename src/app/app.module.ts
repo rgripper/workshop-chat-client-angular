@@ -9,6 +9,7 @@ import { MessageListComponent } from './chat/message-list/message-list.component
 import { MessageInputComponent } from './chat/message-input/message-input.component';
 import { ChatComponent } from './chat/chat.component';
 import { appRoutes } from "app/app.routes";
+import { AuthGuard } from "app/account/auth-guard";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { appRoutes } from "app/app.routes";
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

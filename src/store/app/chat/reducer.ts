@@ -1,63 +1,47 @@
 import { Message } from 'messaging/message';
 import { User } from 'messaging/user';
-import { ChatData } from 'messaging/chat-data';
-import { ChatState, ChatStateType } from './state';
+import { ChatState } from './state';
 
 export enum ChatActionType {
-  Left = 'ChatActionType.Left',
-  JoinInProgress = 'ChatActionType.JoinInProgress',
-  JoinResultReceived = 'ChatActionType.JoinResultReceived', 
-  MessageReceived = 'ChatActionType.MessageReceived', 
-  UserJoined = 'ChatActionType.UserJoined', 
-  UserLeft = 'ChatActionType.UserLeft'
+  Initialize = 'ChatActionType.Initialize',
+  AddMessage = 'ChatActionType.AddMessage',
+  AddUser = 'ChatActionType.AddUser',
+  RemoveUser = 'ChatActionType.RemoveUser'
 }
 
 export type ChatAction =
   | {
-    type: ChatActionType.Left
-  }
-  | {
-    type: ChatActionType.JoinInProgress
-  }
-  | {
-    type: ChatActionType.JoinResultReceived,
+    type: ChatActionType.Initialize,
     payload: { chatState: ChatState }
   }
   | {
-    type: ChatActionType.MessageReceived,
+    type: ChatActionType.AddMessage,
     payload: { message: Message }
   }
   | {
-    type: ChatActionType.UserJoined,
+    type: ChatActionType.AddUser,
     payload: { user: User }
   }
   | {
-    type: ChatActionType.UserLeft,
-    payload: { userName: string }
+    type: ChatActionType.RemoveUser,
+    payload: { userId: number }
   }
 
-export function chatStateReducer (state: ChatState = ChatState.Initial, action: ChatAction): ChatState {
+export function chatStateReducer(state: ChatState = ChatState.Initial, action: ChatAction): ChatState {
   switch (action.type) {
-    case ChatActionType.Left:
-      return { type: ChatStateType.NotAuthenticated };
-    case ChatActionType.JoinInProgress:
-      return { type: ChatStateType.Authenticating };
-    case ChatActionType.JoinResultReceived:
+    case ChatActionType.Initialize:
       return action.payload.chatState;
-    case ChatActionType.MessageReceived: {
-      if (state.type != ChatStateType.AuthenticatedAndInitialized) return state;
-      const data: ChatData = { ...state.data, messages: state.data.messages.concat([action.payload.message]) };
-      return { ...state, data };
+    case ChatActionType.AddMessage: {
+      if (state.currentUser == undefined) return state;
+      return { ...state, messages: state.messages.concat([action.payload.message]) };
     }
-    case ChatActionType.UserJoined: {
-      if (state.type != ChatStateType.AuthenticatedAndInitialized) return state;
-      const data: ChatData = { ...state.data, users: state.data.users.filter(x => x.name != action.payload.user.name).concat([action.payload.user]) };
-      return { ...state, data };
+    case ChatActionType.AddUser: {
+      if (state.currentUser == undefined) return state;
+      return { ...state, users: state.users.filter(x => x.id != action.payload.user.id).concat([action.payload.user]) };
     }
-    case ChatActionType.UserLeft: {
-      if (state.type != ChatStateType.AuthenticatedAndInitialized) return state;
-      const data: ChatData = { ...state.data, users: state.data.users.filter(x => x.name != action.payload.userName) };
-      return { ...state, data };
+    case ChatActionType.RemoveUser: {
+      if (state.currentUser == undefined) return state;
+      return { ...state, users: state.users.filter(x => x.id != action.payload.userId) };
     }
     default:
       return state;
