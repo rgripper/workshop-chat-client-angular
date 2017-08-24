@@ -6,12 +6,16 @@ import { ChatAction } from "store/app/chat/reducer"
 
 export enum AccountActionType {
   StartAuthentication = 'AccountActionType.StartAuthentication',
-  SetAuthenticationResult = 'AccountActionType.SetAuthenticationResult'
+  SetAuthenticationResult = 'AccountActionType.SetAuthenticationResult',
+  Leave = 'AccountActionType.Leave'
 }
 
 export type AccountAction =
   | {
     type: AccountActionType.StartAuthentication
+  }
+  | {
+    type: AccountActionType.Leave
   }
   | {
     type: AccountActionType.SetAuthenticationResult,
@@ -26,6 +30,8 @@ export function accountStateReducer(state: AccountState = AccountState.Initial, 
       return action.payload.user != undefined
         ? { type: AccountStateType.Authenticated, user: action.payload.user }
         : { type: AccountStateType.Unauthenticated, user: action.payload.errorMessage };
+    case AccountActionType.Leave:
+      return { type: AccountStateType.Unauthenticated, user: undefined }
     default:
       return state;
   }

@@ -8,6 +8,8 @@ export class DummyChatService {
 
     private chatState: ChatState = { messages:[], users: []};
 
+    private currentUser?: User;
+
     private readonly dummyNames = ['Sam', 'Bill', 'RubberyJoe', 'Jenny', 'Cyclepath9'];
 
     private lastMessageId = 0;
@@ -20,19 +22,20 @@ export class DummyChatService {
     }
 
     join(userName: string) {
-        const currentUser = { name: userName } as User;
-        this.chatState = { ...this.initialChatState, users: [currentUser] };
+        this.currentUser = { name: userName } as User;
+        this.chatState = { ...this.initialChatState, users: [this.currentUser] };
         this.handler.handleJoinResult({ isSuccessful: true, initialData: this.chatState });
     }
 
     leave() {
+        this.currentUser = undefined;
         this.chatState = this.initialChatState;
     }
 
     sendMessage(messageSubmission: SubmittedMessage) {
-        if (this.chatState.currentUser == undefined) throw new Error('Invalid state');
+        if (this.currentUser == undefined) throw new Error('Invalid state');
         this.lastMessageId++;
-        const newMessage: Message = { ...messageSubmission, id: this.lastMessageId, senderName: this.chatState.data.currentUser.name, creationDate: new Date() };
+        const newMessage: Message = { ...messageSubmission, id: this.lastMessageId, senderName: this.currentUser.name, creationDate: new Date() };
         this.handler.handleMessageReceived(newMessage);
     }
 
@@ -44,7 +47,7 @@ export class DummyChatService {
 
     private setUpHandler(handler: ChatDataHandler) {
         setInterval(() => {
-            if (this.chatState.currentUser == undefined) return;
+            if (this.currentUser == undefined) return;
 
             const otherUsers = this.chatState.users.filter(x => x != (this.chatState as any).data.currentUser);
             const prob = Math.random();

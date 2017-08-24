@@ -4,6 +4,6 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from "app/account/auth-guard";
 
 export const appRoutes: Routes = [
-  { path: 'account/login', component: LoginComponent },
-  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
+  { path: '', component: ChatComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
 ];

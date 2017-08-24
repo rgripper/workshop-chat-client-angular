@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ import { MessageInputComponent } from './chat/message-input/message-input.compon
 import { ChatComponent } from './chat/chat.component';
 import { appRoutes } from "app/app.routes";
 import { AuthGuard } from "app/account/auth-guard";
+import { AppStoreModule } from "store/app/store.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AuthGuard } from "app/account/auth-guard";
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    CommonModule,
+    RouterModule.forRoot(appRoutes),
+    AppStoreModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

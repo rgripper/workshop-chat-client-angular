@@ -1,8 +1,8 @@
-import { Store } from "@ngrx/store";
-import { AppState } from "store/app/state";
-import { ChatActionType } from "store/app/chat/reducer";
-import { ChatService } from "messaging/chat.service";
-import { SubmittedMessage } from "messaging/submitted-message";
+import { Store } from "@ngrx/store"
+import { AppState } from "store/app/state"
+import { AccountActionType } from "store/app/account/reducer"
+import { ChatService } from "messaging/chat.service"
+import { SubmittedMessage } from "messaging/submitted-message"
 
 export interface AppActions {
   sendMessage(x: SubmittedMessage): void
@@ -17,11 +17,11 @@ export function createAppActions(chatService: ChatService, store: Store<AppState
       chatService.sendMessage(message); // update server state
     },
     join(userName: string) {
-      store.dispatch({ type: ChatActionType.JoinInProgress }); // update client state
+      store.dispatch({ type: AccountActionType.StartAuthentication }); // update client state
       chatService.join(userName); // update server state
     },
     leave() {
-      store.dispatch({ type: ChatActionType.Left }); // update client state
+      store.dispatch({ type: AccountActionType.Leave }); // update client state
       chatService.leave(); // update server state
     }
   }

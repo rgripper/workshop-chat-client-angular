@@ -32,15 +32,12 @@ export function chatStateReducer(state: ChatState = ChatState.Initial, action: C
     case ChatActionType.Initialize:
       return action.payload.chatState;
     case ChatActionType.AddMessage: {
-      if (state.currentUser == undefined) return state;
       return { ...state, messages: state.messages.concat([action.payload.message]) };
     }
     case ChatActionType.AddUser: {
-      if (state.currentUser == undefined) return state;
       return { ...state, users: state.users.filter(x => x.id != action.payload.user.id).concat([action.payload.user]) };
     }
     case ChatActionType.RemoveUser: {
-      if (state.currentUser == undefined) return state;
       return { ...state, users: state.users.filter(x => x.id != action.payload.userId) };
     }
     default:

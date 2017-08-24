@@ -1,9 +1,9 @@
 import { ChatState } from "./chat/state"
-import { AccountState } from "store/app/account/state";
+import { AccountState } from "store/app/account/state"
 
 export interface AppState {
-  readonly account: AccountState,
-  readonly chat: ChatState,
+  readonly account: AccountState
+  readonly chat: ChatState
 }
 
 export const AppState = {
