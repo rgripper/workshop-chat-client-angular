@@ -1,6 +1,6 @@
 import { User } from './user';
 import { ChatState } from "store/app/chat/state";
-import { ChatDataHandler } from "./chat.service";
+import { AbstractChatDataHandler } from "./chat.service";
 import { Message } from './message';
 import { SubmittedMessage } from './submitted-message';
 
@@ -16,15 +16,15 @@ export class DummyChatService {
 
     private readonly initialChatState = { messages: [], users: [] };
 
-    constructor(url: string, private handler: ChatDataHandler) {
+    constructor(url: string, private handler: AbstractChatDataHandler) {
         console.log(url);
         this.setUpHandler(handler);
     }
 
     join(userName: string) {
-        this.currentUser = { name: userName } as User;
+        this.currentUser = { id: 1999, name: userName };
         this.chatState = { ...this.initialChatState, users: [this.currentUser] };
-        this.handler.handleJoinResult({ isSuccessful: true, initialData: this.chatState });
+        this.handler.handleJoinResult({ isSuccessful: true, initialData: this.chatState, user: this.currentUser });
     }
 
     leave() {
@@ -35,7 +35,7 @@ export class DummyChatService {
     sendMessage(messageSubmission: SubmittedMessage) {
         if (this.currentUser == undefined) throw new Error('Invalid state');
         this.lastMessageId++;
-        const newMessage: Message = { ...messageSubmission, id: this.lastMessageId, senderName: this.currentUser.name, creationDate: new Date() };
+        const newMessage: Message = { ...messageSubmission, id: this.lastMessageId, senderId: this.currentUser.id, creationDate: new Date() };
         this.handler.handleMessageReceived(newMessage);
     }
 
@@ -45,7 +45,7 @@ export class DummyChatService {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    private setUpHandler(handler: ChatDataHandler) {
+    private setUpHandler(handler: AbstractChatDataHandler) {
         setInterval(() => {
             if (this.currentUser == undefined) return;
 
@@ -59,7 +59,7 @@ export class DummyChatService {
                 if (otherUsers.length == 0) return;
                 const randomUser = otherUsers[this.getRandomInt(0, otherUsers.length)];
                 this.lastMessageId++;
-                const newMessage: Message = { id: this.lastMessageId, senderName: randomUser.name, text: `Message ${this.lastMessageId} from ${randomUser.name}`, creationDate: new Date() };
+                const newMessage: Message = { id: this.lastMessageId, senderId: randomUser.id, text: `Message ${this.lastMessageId} from ${randomUser.name}`, creationDate: new Date() };
                 handler.handleMessageReceived(newMessage);
                 return;
             }
@@ -74,7 +74,7 @@ export class DummyChatService {
                 if (otherUsers.length == 0) return;
                 const leavingUser = otherUsers[this.getRandomInt(0, otherUsers.length)];
                 this.chatState = { ...this.chatState, users: this.chatState.users.filter(x => x.name != leavingUser.name) };
-                handler.handleUserReft(leavingUser.name);
+                handler.handleUserReft(leavingUser.id);
                 return;
             }
         }, 1000);

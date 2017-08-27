@@ -4,11 +4,11 @@ import { SubmittedMessage } from './submitted-message'
 import { User } from './User'
 import { ChatData } from "./chat-data"
 
-export interface ChatDataHandler {
-    handleJoinResult: (x: JoinResult) => void
-    handleUserJoined: (x: User) => void
-    handleUserReft: (userName: string) => void
-    handleMessageReceived: (x: Message) => void
+export abstract class AbstractChatDataHandler {
+    abstract handleJoinResult(x: JoinResult): void
+    abstract handleUserJoined(x: User): void
+    abstract handleUserReft(userId: number): void
+    abstract handleMessageReceived(x: Message): void
 }
 
 type CustomServerEvent =
@@ -22,15 +22,17 @@ type CustomServerEvent =
     }
     | {
         type: 'UserLeft',
-        data: string
+        data: { userId: number } // TODO type it
     }
 
-export type JoinResult = { isSuccessful: true, initialData: ChatData } | { isSuccessful: false, errorMessage: string };
+export type JoinResult =
+    | { isSuccessful: true, initialData: ChatData, user: User }
+    | { isSuccessful: false, errorMessage: string }
 
 export class ChatService {
     private readonly socket: SocketIOClient.Socket;
 
-    constructor(url: string, handler: ChatDataHandler) {
+    constructor(url: string, handler: AbstractChatDataHandler) {
         console.log(url);
         this.socket = io(url, { transports: ['websocket'], autoConnect: false });
         this.socket.on('connect', () => console.log('conn'));
@@ -40,19 +42,19 @@ export class ChatService {
         this.socket.connect();
     }
 
-    join(userName: string) {
+    join(userName: string): void {
         this.socket.emit('chat.client.join', userName);
     }
 
-    leave() {
+    leave(): void {
         this.socket.emit('chat.client.leave');
     }
 
-    sendMessage(message: SubmittedMessage) {
+    sendMessage(message: SubmittedMessage): void {
         this.socket.emit('chat.client.message', message);
     }
 
-    setUpHandler(socket: SocketIOClient.Socket, handler: ChatDataHandler) {
+    setUpHandler(socket: SocketIOClient.Socket, handler: AbstractChatDataHandler): void {
         socket.on('chat.server.join-result', function (result: JoinResult) {
             console.debug('chat.server.join-result');
             handler.handleJoinResult(result);
@@ -67,7 +69,7 @@ export class ChatService {
                     handler.handleUserJoined(event.data);
                     return;
                 case 'UserLeft':
-                    handler.handleUserReft(event.data);
+                    handler.handleUserReft(event.data.userId);
                     return;
             }
         });
