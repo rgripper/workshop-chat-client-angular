@@ -1,4 +1,5 @@
-import * as io from 'socket.io-client'
+import { Injectable, InjectionToken, Inject } from '@angular/core';
+import * as io from 'socket.io-client';
 import { Message } from './message'
 import { SubmittedMessage } from './submitted-message'
 import { User } from './User'
@@ -29,10 +30,14 @@ export type JoinResult =
     | { isSuccessful: true, initialData: ChatData, user: User }
     | { isSuccessful: false, errorMessage: string }
 
+
+export const ChatServerUrlToken = new InjectionToken<string>('chatServerUrl');
+
+@Injectable()
 export class ChatService {
     private readonly socket: SocketIOClient.Socket;
 
-    constructor(url: string, handler: AbstractChatDataHandler) {
+    constructor(@Inject(ChatServerUrlToken) url: string, handler: AbstractChatDataHandler) {
         console.log(url);
         this.socket = io(url, { transports: ['websocket'], autoConnect: false });
         this.socket.on('connect', () => console.log('conn'));

@@ -6,8 +6,6 @@ import { JoinResult, AbstractChatDataHandler } from "messaging/chat.service";
 import { Message } from "messaging/Message";
 import { User } from "messaging/User";
 
-//const ChatServerUrlToken = new InjectionToken<string>('chatServerUrl');
-
 export class ChatDataHandler extends AbstractChatDataHandler {
     constructor(private store: Store<AppState>) { super(); }
 

@@ -1,3 +1,5 @@
+import { AbstractChatDataHandler } from '../messaging/chat.service';
+import { StoreModule } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -17,7 +19,8 @@ import { AppStoreModule } from "store/app/store.module";
 
 import {MdButtonModule, MdInputModule} from '@angular/material';
 import { AppService } from "store/app/AppService";
-import { ChatService } from "messaging/chat.service";
+import { ChatService, ChatServerUrlToken } from "messaging/chat.service";
+import { ChatDataHandler } from "store/app/ChatDataHandler";
 
 @NgModule({
   declarations: [
@@ -33,10 +36,11 @@ import { ChatService } from "messaging/chat.service";
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    StoreModule,
     AppStoreModule,
     BrowserAnimationsModule, MdButtonModule, MdInputModule
   ],
-  providers: [AuthGuard, ChatService, AppService, ],
+  providers: [AuthGuard, { provide: AbstractChatDataHandler, useValue: ChatDataHandler }, ChatService, AppService, { provide: ChatServerUrlToken, useValue: 'localhost:35558' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

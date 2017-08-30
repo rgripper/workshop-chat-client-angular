@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --disable-host-check",
+    "start": "ng serve --sourcemap=false --disable-host-check",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
