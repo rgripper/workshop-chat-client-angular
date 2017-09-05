@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { AccountAction, AccountActionType } from './account/reducer';
 import { Store } from '@ngrx/store';
 import { ChatAction, ChatActionType } from './chat/reducer';
@@ -6,6 +7,7 @@ import { JoinResult, AbstractChatDataHandler } from "messaging/chat.service";
 import { Message } from "messaging/Message";
 import { User } from "messaging/User";
 
+@Injectable()
 export class ChatDataHandler extends AbstractChatDataHandler {
     constructor(private store: Store<AppState>) { super(); }
 

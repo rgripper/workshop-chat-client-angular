@@ -38,7 +38,6 @@ export class ChatService {
     private readonly socket: SocketIOClient.Socket;
 
     constructor(@Inject(ChatServerUrlToken) url: string, handler: AbstractChatDataHandler) {
-        console.log(url);
         this.socket = io(url, { transports: ['websocket'], autoConnect: false });
         this.socket.on('connect', () => console.log('conn'));
         this.socket.on('disconnected', () => console.log('disc'));

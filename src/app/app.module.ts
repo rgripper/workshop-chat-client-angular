@@ -40,7 +40,7 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
     AppStoreModule,
     BrowserAnimationsModule, MdButtonModule, MdInputModule
   ],
-  providers: [AuthGuard, { provide: AbstractChatDataHandler, useValue: ChatDataHandler }, ChatService, AppService, { provide: ChatServerUrlToken, useValue: 'localhost:35558' }],
+  providers: [AuthGuard, { provide: AbstractChatDataHandler, useClass: ChatDataHandler }, ChatService, AppService, { provide: ChatServerUrlToken, useValue: 'localhost:35558' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
