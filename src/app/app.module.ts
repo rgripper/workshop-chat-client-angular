@@ -10,6 +10,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './account/login/login.component';
 import { UserListComponent } from './chat/user-list/user-list.component';
+import { MessageListItemFromMeComponent } from './chat/message-list/message-list-item-from-me/component';
+import { MessageListItemFromOthersComponent } from './chat/message-list/message-list-item-from-others/component';
 import { MessageListComponent } from './chat/message-list/message-list.component';
 import { MessageInputComponent } from './chat/message-input/message-input.component';
 import { ChatComponent } from './chat/chat.component';
@@ -28,6 +30,8 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
     LoginComponent,
     UserListComponent,
     MessageListComponent,
+    MessageListItemFromMeComponent,
+    MessageListItemFromOthersComponent,
     MessageInputComponent,
     ChatComponent,
   ],
