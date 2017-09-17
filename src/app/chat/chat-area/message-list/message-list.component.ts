@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/app/state';
+import { AppState } from '../../../../store/app/state';
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'messaging/message';
 
@@ -17,8 +17,7 @@ export class MessageListComponent implements OnInit {
     this.title = 'Whatever';
     store.subscribe((state) => {
       this.messages = state.chat.messages.map(m => m);
-      console.log('this.messages', this.messages);
-    })
+    });
   }
 
   ngOnInit() {

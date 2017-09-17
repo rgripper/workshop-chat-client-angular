@@ -1,0 +1,14 @@
+:host {
+  .wrapper__chat-area {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .wrapper__item__user-list {
+    flex: 0.2;
+  }
+
+  .wrapper__item__message-list {
+    flex: 0.8;
+  }
+}

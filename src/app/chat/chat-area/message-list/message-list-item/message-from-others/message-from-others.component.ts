@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-list-item',
+  selector: 'app-message-list-item-from-me',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class UserListItemComponent implements OnInit {
+export class MessageListItemFromMeComponent implements OnInit {
 
   constructor() { }
 
