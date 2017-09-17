@@ -1,9 +1,11 @@
+import { Injectable } from '@angular/core';
 import { User } from './user';
 import { ChatState } from "store/app/chat/state";
 import { AbstractChatDataHandler } from "./chat.service";
 import { Message } from './message';
 import { SubmittedMessage } from './submitted-message';
 
+@Injectable()
 export class DummyChatService {
 
     private chatState: ChatState = { messages:[], users: []};
@@ -16,8 +18,7 @@ export class DummyChatService {
 
     private readonly initialChatState = { messages: [], users: [] };
 
-    constructor(url: string, private handler: AbstractChatDataHandler) {
-        console.log(url);
+    constructor(private handler: AbstractChatDataHandler) {
         this.setUpHandler(handler);
     }
 
@@ -49,7 +50,7 @@ export class DummyChatService {
         setInterval(() => {
             if (this.currentUser == undefined) return;
 
-            const otherUsers = this.chatState.users.filter(x => x != (this.chatState as any).data.currentUser);
+            const otherUsers = this.chatState.users.filter(x => x != this.currentUser);
             const prob = Math.random();
 
             if (prob > 0.6) {

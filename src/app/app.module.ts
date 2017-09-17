@@ -1,3 +1,4 @@
+import { DummyChatService } from '../messaging/dummy-chat.service';
 import { AbstractChatDataHandler } from '../messaging/chat.service';
 import { StoreModule } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,28 +27,29 @@ import { ChatService, ChatServerUrlToken } from "messaging/chat.service";
 import { ChatDataHandler } from "store/app/ChatDataHandler";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    UserListComponent,
-    UserListItemComponent,
-    MessageListComponent,
-    MessageListItemFromMeComponent,
-    MessageListItemFromOthersComponent,
-    MessageInputComponent,
-    ChatComponent,
-  ],
-  imports: [
-    MdIconModule,
-    BrowserModule,
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    StoreModule,
-    AppStoreModule,
-    BrowserAnimationsModule, MdButtonModule, MdInputModule
-  ],
-  providers: [AuthGuard, { provide: AbstractChatDataHandler, useClass: ChatDataHandler }, ChatService, AppService, { provide: ChatServerUrlToken, useValue: 'localhost:35558' }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        UserListComponent,
+        UserListItemComponent,
+        MessageListComponent,
+        MessageListItemFromMeComponent,
+        MessageListItemFromOthersComponent,
+        MessageInputComponent,
+        ChatComponent,
+    ],
+    imports: [
+        MdIconModule,
+        BrowserModule,
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot(appRoutes),
+        StoreModule,
+        AppStoreModule,
+        BrowserAnimationsModule, MdButtonModule, MdInputModule
+    ],
+    providers: [AuthGuard, { provide: AbstractChatDataHandler, useClass: ChatDataHandler },
+        { provide: ChatService, useClass: DummyChatService }, AppService, { provide: ChatServerUrlToken, useValue: 'localhost:35558' }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
