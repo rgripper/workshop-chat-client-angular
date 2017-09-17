@@ -1,0 +1,13 @@
+:host {
+  .message-list-item-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 1rem;
+
+    >.message-list-item-content {
+      background-color: #c4c4c4;  
+      box-shadow: 0 5px 5px #bababa;
+      padding: 1rem;
+    }
+  }
+}

@@ -1,6 +1,4 @@
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/app/state';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'messaging/message';
 
 @Component({
@@ -8,7 +6,13 @@ import { Message } from 'messaging/message';
   templateUrl: './message-list.component.html',
   styleUrls: ['./message-list.component.scss']
 })
-export class MessageListComponent {
+export class MessageListComponent implements OnInit {
   @Input() messages: Message[];
-  @Input() title: string;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
 }

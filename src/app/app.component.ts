@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    
     constructor(store: Store<AppState>) {
-        store.subscribe(x => console.log('App store:', x));
     }
     title = 'app';
 }

@@ -10,12 +10,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './account/login/login.component';
-import { UserListComponent } from './chat/user-list/user-list.component';
-import { UserListItemComponent } from './chat/user-list/user-list-item/component';
-import { MessageListItemComponent } from './chat/message-list/message-list-item/component';
-import { MessageListComponent } from './chat/message-list/message-list.component';
+
+import { UserListComponent } from './chat/chat-area/user-list/user-list.component';
+import { UserListItemComponent } from './chat/chat-area/user-list/user-list-item/user-list-item.component';
+
+import { MessageListItemComponent } from './chat/chat-area/message-list/message-list-item/message-list-item.component';
+import { MessageListComponent } from './chat/chat-area/message-list/message-list.component';
 import { MessageInputComponent } from './chat/message-input/message-input.component';
+
+import { ChatAreaComponent } from './chat/chat-area/chat-area.component';
 import { ChatComponent } from './chat/chat.component';
+
+
 import { appRoutes } from "app/app.routes";
 import { AuthGuard } from "app/account/auth-guard";
 import { AppStoreModule } from "store/app/store.module";
@@ -28,13 +34,14 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
 @NgModule({
     declarations: [
         AppComponent,
+        ChatAreaComponent,
+        ChatComponent,
         LoginComponent,
-        UserListComponent,
-        UserListItemComponent,
+        MessageInputComponent,
         MessageListComponent,
         MessageListItemComponent,
-        MessageInputComponent,
-        ChatComponent,
+        UserListComponent,
+        UserListItemComponent,
     ],
     imports: [
         MdIconModule,

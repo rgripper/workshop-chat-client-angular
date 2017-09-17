@@ -3,8 +3,8 @@ import { Message } from 'messaging/message';
 
 @Component({
   selector: 'app-message-list-item',
-  templateUrl: './component.html',
-  styleUrls: ['./component.scss']
+  templateUrl: './message-list-item.component.html',
+  styleUrls: ['./message-list-item.component.scss']
 })
 export class MessageListItemComponent implements OnInit {
   
