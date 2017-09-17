@@ -26,7 +26,7 @@ import { appRoutes } from "app/app.routes";
 import { AuthGuard } from "app/account/auth-guard";
 import { AppStoreModule } from "store/app/store.module";
 
-import { MdButtonModule, MdInputModule, MdIconModule } from '@angular/material';
+import { MdCardModule, MdButtonModule, MdInputModule, MdIconModule } from '@angular/material';
 import { AppService } from "store/app/AppService";
 import { ChatService, ChatServerUrlToken } from "messaging/chat.service";
 import { ChatDataHandler } from "store/app/ChatDataHandler";
@@ -51,7 +51,7 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
         RouterModule.forRoot(appRoutes),
         StoreModule,
         AppStoreModule,
-        BrowserAnimationsModule, MdButtonModule, MdInputModule
+        BrowserAnimationsModule, MdButtonModule, MdInputModule, MdCardModule,
     ],
     providers: [AuthGuard, { provide: AbstractChatDataHandler, useClass: ChatDataHandler },
         { provide: ChatService, useClass: DummyChatService }, AppService, { provide: ChatServerUrlToken, useValue: 'localhost:35558' }],

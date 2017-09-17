@@ -6,20 +6,6 @@
     </div>
   </div>
   <div class="wrapper__item__other-users-list">
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
-    <app-user-list-item class="user-list-component--list-item"></app-user-list-item>
+    <app-user-list-item *ngFor="let user of users" [user]="user" class="user-list-component--list-item"></app-user-list-item>
   </div>
 </div>
