@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/app/state';
+import { AppState } from 'store/app/state';
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from 'messaging/message';
 
@@ -9,6 +9,5 @@ import { Message } from 'messaging/message';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent {
-  @Input() messages: Message[];
-  @Input() title: string;
+  @Input() messages: ReadonlyArray<Message>;
 }
