@@ -1,6 +1,4 @@
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/app/state';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'messaging/message';
 
 @Component({
@@ -9,15 +7,9 @@ import { Message } from 'messaging/message';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements OnInit {
-  messages: Message[];
-  title: string;
+  @Input() messages: Message[];
 
-  constructor(store: Store<AppState>) {
-    this.messages = [];
-    this.title = 'Whatever';
-    store.subscribe((state) => {
-      this.messages = state.chat.messages.map(m => m);
-    });
+  constructor() {
   }
 
   ngOnInit() {

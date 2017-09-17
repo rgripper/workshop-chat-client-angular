@@ -1,4 +1,4 @@
-<section class="component--type-chat-wrapper">
-  <app-chat-area></app-chat-area>
+<section class="component--type-chat-wrapper" *ngIf="chat$ | async as chat">
+  <app-chat-area [chat]="chat"></app-chat-area>
   <app-message-input></app-message-input>
 </section>

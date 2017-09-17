@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../store/app/state';
 import { User } from 'messaging/user';
@@ -8,16 +8,6 @@ import { User } from 'messaging/user';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
-  users: User[];
-
-  constructor(store: Store<AppState>) {
-    store.subscribe((state) => {
-      this.users = state.chat.users.map(u => u);
-    });
-  }
-
-  ngOnInit() {
-  }
-
+export class UserListComponent {
+  @Input() users: User[];
 }
