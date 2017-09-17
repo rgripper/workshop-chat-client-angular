@@ -20,5 +20,5 @@ export type AccountState =
     }
 
 export const AccountState = {
-    Initial: { type: AccountStateType.Unknown } as AccountState
+    Initial: { type: AccountStateType.Unknown, user: undefined } as AccountState
 }

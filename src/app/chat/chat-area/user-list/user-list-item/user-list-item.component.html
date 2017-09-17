@@ -1,4 +1,4 @@
 <md-card class="wrapper">
-  <img [src]="user.avatarUrl" />
+  <img [src]="user.avatarUrl || 'https://upload.wikimedia.org/wikipedia/en/b/b1/Portrait_placeholder.png'" />
   <span class="user-name">{{user.name}}</span>
 </md-card>

@@ -3,7 +3,7 @@
   <button md-raised-button md-mini-fab type="button"><md-icon>queue_music</md-icon></button>
   <button md-raised-button md-mini-fab type="button"><md-icon>camera_alt</md-icon></button>
 
-  <input formControlName="messageText" mdInput placeholder="Message" value="">
+  <input type="text" class="input__message-box" formControlName="messageText" mdInput placeholder="Message" [(ngModel)]="message">
 
-  <button md-raised-button color="primary" md-fab type="button"><md-icon>send</md-icon></button>
+  <button md-raised-button color="primary" (click)="send($event)" md-fab type="button"><md-icon>send</md-icon></button>
 </section>

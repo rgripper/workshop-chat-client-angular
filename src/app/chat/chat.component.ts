@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app/state';
 import { ChatState } from '../../store/app/chat/state';
 import { Observable } from 'rxjs/Observable';
+import { AccountState } from 'store/app/account/state';
 
 interface Model {
   
@@ -15,10 +16,11 @@ interface Model {
 })
 export class ChatComponent implements OnInit {
   private chat$: Observable<ChatState>;
+  private account$: Observable<AccountState>;
 
   constructor(store: Store<AppState>) {
       this.chat$ = store.select(s => s.chat);
-      console.log('this.chat', this.chat$);
+      this.account$ = store.select(s => s.account);
   }
 
   ngOnInit() {

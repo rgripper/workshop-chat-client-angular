@@ -1,10 +1,9 @@
-.message-list-item-from-me-wrapper {
+.message-list-item-from-others-wrapper {
   display: flex;
   margin-bottom: 1rem;
 
-  >.message-list-item-from-me-content {
+  >.message-list-item-from-others-content {
     background-color: #2f80ed;
-    box-shadow: 0 5px 5px #bababa;
     color: white;
     padding: 1rem;
   }

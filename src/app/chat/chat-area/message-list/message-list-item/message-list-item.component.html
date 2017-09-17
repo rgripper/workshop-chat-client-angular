@@ -1,5 +1,7 @@
-<div class="message-list-item-wrapper">
-  <div class="message-list-item__content">
-    {{message.text}}
-  </div>
+<div class="message-list-item-wrapper" *ngIf="myUser.id != message.senderId; else myUserMessage">
+  <app-message-from-others [message]="message"></app-message-from-others>
 </div>
+<ng-template #myUserMessage>
+  <app-message-from-me [message]="message"></app-message-from-me>
+</ng-template>
+
