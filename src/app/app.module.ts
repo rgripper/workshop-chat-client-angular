@@ -11,8 +11,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './account/login/login.component';
 import { UserListComponent } from './chat/user-list/user-list.component';
 import { UserListItemComponent } from './chat/user-list/user-list-item/component';
-import { MessageListItemFromMeComponent } from './chat/message-list/message-list-item-from-me/component';
-import { MessageListItemFromOthersComponent } from './chat/message-list/message-list-item-from-others/component';
+import { MessageListItemComponent } from './chat/message-list/message-list-item/component';
 import { MessageListComponent } from './chat/message-list/message-list.component';
 import { MessageInputComponent } from './chat/message-input/message-input.component';
 import { ChatComponent } from './chat/chat.component';
@@ -32,13 +31,11 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
     UserListComponent,
     UserListItemComponent,
     MessageListComponent,
-    MessageListItemFromMeComponent,
-    MessageListItemFromOthersComponent,
+    MessageListItemComponent,
     MessageInputComponent,
     ChatComponent,
   ],
   imports: [
-    BrowserModule,
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
