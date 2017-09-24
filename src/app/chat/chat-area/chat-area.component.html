@@ -1,4 +1,4 @@
 <div class="wrapper__chat-area">
-  <app-user-list [users]="chat.users" [myUser]="account.user" class="wrapper__item__user-list"></app-user-list>
-  <app-message-list [messages]="chat.messages" [myUser]="account.user" class="wrapper__item__message-list"></app-message-list>
+  <app-user-list [users]="chat.users" [currentUser]="account.user" class="wrapper__item__user-list"></app-user-list>
+  <app-message-list [messages]="chat.messages" [currentUser]="account.user" [users]="chat.users" class="wrapper__item__message-list"></app-message-list>
 </div>

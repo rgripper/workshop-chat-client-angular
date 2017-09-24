@@ -10,5 +10,5 @@ import { User } from 'messaging/user';
 })
 export class UserListComponent {
   @Input() users: User[];
-  @Input() myUser: User;
+  @Input() currentUser: User;
 }

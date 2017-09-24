@@ -2,19 +2,19 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'messaging/message';
 import { User } from 'messaging/user';
 
+export interface MessageListItemInput {
+    message: Message;
+    fromCurrentUser: boolean;
+    sender: User;
+}
+
 @Component({
-  selector: 'app-message-list-item',
-  templateUrl: './message-list-item.component.html',
-  styleUrls: ['./message-list-item.component.scss']
+    selector: 'app-message-list-item',
+    templateUrl: './message-list-item.component.html',
+    styleUrls: ['./message-list-item.component.scss']
 })
-export class MessageListItemComponent implements OnInit {
-  
-  @Input() message: Message;
-  @Input() myUser: User;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class MessageListItemComponent implements MessageListItemInput {
+    @Input() message: Message;
+    @Input() fromCurrentUser: boolean;
+    @Input() sender: User;
 }

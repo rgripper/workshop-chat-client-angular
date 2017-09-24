@@ -14,8 +14,6 @@ import { LoginComponent } from './account/login/login.component';
 import { UserListComponent } from './chat/chat-area/user-list/user-list.component';
 import { UserListItemComponent } from './chat/chat-area/user-list/user-list-item/user-list-item.component';
 
-import { MessageFromOthersComponent } from './chat/chat-area/message-list/message-list-item/message-from-others.component';
-import { MessageFromMeComponent } from './chat/chat-area/message-list/message-list-item/message-from-me.component';
 import { MessageListItemComponent } from './chat/chat-area/message-list/message-list-item/message-list-item.component';
 import { MessageListComponent } from './chat/chat-area/message-list/message-list.component';
 import { MessageInputComponent } from './chat/message-input/message-input.component';
@@ -42,8 +40,6 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
         MessageInputComponent,
         MessageListComponent,
         MessageListItemComponent,
-        MessageFromMeComponent,
-        MessageFromOthersComponent,
         UserListComponent,
         UserListItemComponent,
     ],
