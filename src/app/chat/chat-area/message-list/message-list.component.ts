@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, TrackByFunction } from '@angular/core';
 import { Message } from 'messaging/message';
 import { User } from 'messaging/user';
 import { MessageListItemInput } from 'app/chat/chat-area/message-list/message-list-item/message-list-item.component';
@@ -27,15 +27,18 @@ export class MessageListComponent implements OnChanges {
     ngOnChanges(changes: SimpleChangeSet<MessageListComponent>) {
         if (changes.messages) {
             this.items = changes.messages.currentValue.map(x => this.createItemModel(x));
+            console.log(this.items);
         }
     }
+
+    getMessageId: TrackByFunction<MessageListItemInput> = (index, item) => item.message.id;
 
     createItemModel(message: Message): MessageListItemInput {
         const sender = this.users.find(x => x.id == message.senderId)!;
         return {
             message,
             sender,
-            fromCurrentUser: this.currentUser.id == sender.id
+            isFromCurrentUser: sender ? this.currentUser.id == sender.id : false
         }
     }
 }

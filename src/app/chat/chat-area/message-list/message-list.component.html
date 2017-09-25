@@ -1,2 +1,2 @@
-<app-message-list-item *ngFor="let item of items" [message]="item.message" [fromCurrentUser]="item.fromCurrentUser" [sender]="item.sender">
+<app-message-list-item *ngFor="let item of items; trackBy: getMessageId" [message]="item.message" [isFromCurrentUser]="item.isFromCurrentUser" [sender]="item.sender">
 </app-message-list-item>

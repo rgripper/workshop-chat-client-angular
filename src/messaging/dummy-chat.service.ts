@@ -8,7 +8,7 @@ import { SubmittedMessage } from './submitted-message';
 @Injectable()
 export class DummyChatService {
 
-    private chatState: ChatState = { messages:[], users: []};
+    private chatState: ChatState = { messages: [], users: [] };
 
     private currentUser?: User;
 
@@ -40,6 +40,10 @@ export class DummyChatService {
         this.handler.handleMessageReceived(newMessage);
     }
 
+    private createAvatarUrl(key: string) {
+        return `https://robohash.org/${key}?size=128x128`;
+    }
+
     private getRandomInt(min: number, max: number) {
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -65,7 +69,8 @@ export class DummyChatService {
                 return;
             }
             else if (prob > 0.05) {
-                const newUser = { id: Math.random(), name: this.getDummyUserName() };
+                const name = this.getDummyUserName();
+                const newUser: User = { id: Math.random(), name, avatarUrl: this.createAvatarUrl(name) };
                 if (this.chatState.users.some(x => x.name == newUser.name)) return;
                 this.chatState = { ...this.chatState, users: this.chatState.users.concat([newUser]) };
                 handler.handleUserJoined(newUser);

@@ -4,7 +4,7 @@ import { User } from 'messaging/user';
 
 export interface MessageListItemInput {
     message: Message;
-    fromCurrentUser: boolean;
+    isFromCurrentUser: boolean;
     sender: User;
 }
 
@@ -15,6 +15,6 @@ export interface MessageListItemInput {
 })
 export class MessageListItemComponent implements MessageListItemInput {
     @Input() message: Message;
-    @Input() fromCurrentUser: boolean;
+    @Input() isFromCurrentUser: boolean;
     @Input() sender: User;
 }
