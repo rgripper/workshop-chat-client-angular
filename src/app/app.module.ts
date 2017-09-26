@@ -30,6 +30,7 @@ import { MdCardModule, MdButtonModule, MdInputModule, MdIconModule } from '@angu
 import { AppService } from "store/app/AppService";
 import { ChatService, ChatServerUrlToken } from "messaging/chat.service";
 import { ChatDataHandler } from "store/app/ChatDataHandler";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
         MessageListItemComponent,
         UserListComponent,
         UserListItemComponent,
+        NotFoundComponent,
     ],
     imports: [
         MdIconModule,
