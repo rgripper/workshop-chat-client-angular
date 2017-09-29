@@ -4,47 +4,27 @@ import { AppState } from 'store/app/state';
 import { Store } from '@ngrx/store';
 import { AccountState, AccountStateType } from 'store/app/account/state';
 import { ChatActionType } from 'store/app/chat/reducer';
+import { ChatService } from 'messaging/chat.service';
+import { AppService } from 'store/app/AppService';
 
 @Component({
     selector: 'app-message-input',
     templateUrl: './message-input.component.html',
     styleUrls: ['./message-input.component.scss']
 })
-export class MessageInputComponent implements OnInit {
+export class MessageInputComponent {
 
     @Input() account: AccountState;
 
     readonly form: FormGroup;
-    private message: string;
-    private store: Store<AppState>;
 
-    constructor(store: Store<AppState>,formBuilder: FormBuilder) {
+    constructor(private appService: AppService, formBuilder: FormBuilder) {
         this.form = formBuilder.group({
             messageText: ['', Validators.required]
         });
-        this.store = store;
-        this.message = '';
     }
 
-    ngOnInit() {
-    }
-
-    public send(e: any) {
-        // TODO: Hmmmmmmmmmmmmm.... Hmmmmmmmm.... ??
-        // Use chat service, instead of forcing a dispatch of a message to the store?
-        if (this.account.type == AccountStateType.Authenticated) {
-            const user = this.account.user;
-            if (user === undefined) return;
-            const message = {
-                id: Date.now(),
-                creationDate: new Date(),
-                senderId: user.id,
-                text: this.message,
-            };
-            this.store.dispatch({
-                type: ChatActionType.AddMessage,
-                payload: { message, },
-            });
-        }
+    public send() {
+        this.appService.sendMessage({ text: this.form.value.messageText });
     }
 }

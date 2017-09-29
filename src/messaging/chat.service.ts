@@ -1,5 +1,5 @@
-import { Injectable, InjectionToken, Inject } from '@angular/core';
-import * as io from 'socket.io-client';
+import { Injectable, InjectionToken, Inject } from '@angular/core'
+import * as io from 'socket.io-client'
 import { Message } from './message'
 import { SubmittedMessage } from './submitted-message'
 import { User } from './User'
@@ -29,7 +29,6 @@ type CustomServerEvent =
 export type JoinResult =
     | { isSuccessful: true, initialData: ChatData, user: User }
     | { isSuccessful: false, errorMessage: string }
-
 
 export const ChatServerUrlToken = new InjectionToken<string>('chatServerUrl');
 

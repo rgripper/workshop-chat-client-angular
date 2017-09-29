@@ -23,7 +23,7 @@ export class DummyChatService {
     }
 
     join(userName: string) {
-        this.currentUser = { id: 1999, name: userName, isConnected: true, isTyping: false };
+        this.currentUser = { id: 1999, name: userName, isConnected: true, isTyping: false, avatarUrl: this.createAvatarUrl(userName) };
         this.chatState = { ...this.initialChatState, users: [this.currentUser] };
         this.handler.handleJoinResult({ isSuccessful: true, initialData: this.chatState, user: this.currentUser });
     }

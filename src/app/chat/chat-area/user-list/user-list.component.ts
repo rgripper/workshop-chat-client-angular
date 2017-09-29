@@ -11,4 +11,8 @@ import { User } from 'messaging/user';
 export class UserListComponent {
   @Input() users: User[];
   @Input() currentUser: User;
+
+  getUserId (index: number, user: User) {
+      return user.id;
+  }
 }
