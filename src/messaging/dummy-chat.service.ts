@@ -23,7 +23,7 @@ export class DummyChatService {
     }
 
     join(userName: string) {
-        this.currentUser = { id: 1999, name: userName };
+        this.currentUser = { id: 1999, name: userName, isConnected: true, isTyping: false };
         this.chatState = { ...this.initialChatState, users: [this.currentUser] };
         this.handler.handleJoinResult({ isSuccessful: true, initialData: this.chatState, user: this.currentUser });
     }
@@ -70,16 +70,16 @@ export class DummyChatService {
             }
             else if (prob > 0.05) {
                 const name = this.getDummyUserName();
-                const newUser: User = { id: Math.random(), name, avatarUrl: this.createAvatarUrl(name) };
-                if (this.chatState.users.some(x => x.name == newUser.name)) return;
-                this.chatState = { ...this.chatState, users: this.chatState.users.concat([newUser]) };
-                handler.handleUserJoined(newUser);
+                const joiningUser: User = this.chatState.users.find(x => x.name == name)
+                    || { id: Math.random(), isConnected: true, isTyping: false, name, avatarUrl: this.createAvatarUrl(name) };
+                this.chatState = { ...this.chatState, users: this.chatState.users.filter(x => x.name != joiningUser.name).concat([{ ...joiningUser, isConnected: false }]) };
+                handler.handleUserJoined(joiningUser);
                 return;
             }
             else {
                 if (otherUsers.length == 0) return;
                 const leavingUser = otherUsers[this.getRandomInt(0, otherUsers.length)];
-                this.chatState = { ...this.chatState, users: this.chatState.users.filter(x => x.name != leavingUser.name) };
+                this.chatState = { ...this.chatState, users: this.chatState.users.filter(x => x.name != leavingUser.name).concat([{ ...leavingUser, isConnected: false }]) };
                 handler.handleUserReft(leavingUser.id);
                 return;
             }
