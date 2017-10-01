@@ -28,6 +28,8 @@ import { AppState } from 'store/app/state';
 import 'rxjs/add/operator/take';
 import { createNewHosts, createInputTransfer, removeNgStyles } from '@angularclass/hmr';
 import { environment } from 'environments/environment';
+import { ChatComponent } from './chat/chat.component';
+
 
 @NgModule({
     declarations: [
@@ -36,6 +38,10 @@ import { environment } from 'environments/environment';
         LoginComponent,
         
         NotFoundComponent,
+        
+        ChatComponent,
+        
+        
     ],
     imports: [
         MdIconModule,
