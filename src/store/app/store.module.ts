@@ -14,7 +14,7 @@ const reducers: ActionReducerMap<AppState> = {
 
 export function stateSetter(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
     return function (state: AppState, action: any) {
-        console.log(action.type, action.payload);
+        //console.log(action.type, action.payload);
         if (action.type === ACTION_SET_ROOT_STATE) {
             return action.payload;
         }

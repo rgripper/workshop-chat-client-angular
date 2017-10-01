@@ -1,3 +1,14 @@
-<p>
-  chat works!
-</p>
+<div *ngIf="chat$ | async as chat">
+  <app-user-list [users]="chat.users">
+
+  </app-user-list>
+
+  <app-message-list [messages]="chat.messages">
+
+  </app-message-list>
+
+  <app-message-input (sendMessage)="submitMessage($event)" >
+
+  </app-message-input>   
+
+</div>

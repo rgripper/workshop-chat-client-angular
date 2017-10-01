@@ -7,6 +7,6 @@ import { ChatComponent } from "app/chat/chat.component";
 
 export const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: ChatComponent},
+  { path: '', component: ChatComponent,canActivate:[AuthGuard]},
   { path: '**', component: NotFoundComponent }
 ];

@@ -29,6 +29,9 @@ import 'rxjs/add/operator/take';
 import { createNewHosts, createInputTransfer, removeNgStyles } from '@angularclass/hmr';
 import { environment } from 'environments/environment';
 import { ChatComponent } from './chat/chat.component';
+import { UserListComponent } from './chat/user-list/user-list.component';
+import { MessageListComponent } from './chat/message-list/message-list.component';
+import { MessageInputComponent } from './chat/message-input/message-input.component';
 
 
 @NgModule({
@@ -40,6 +43,12 @@ import { ChatComponent } from './chat/chat.component';
         NotFoundComponent,
         
         ChatComponent,
+        
+        UserListComponent,
+        
+        MessageListComponent,
+        
+        MessageInputComponent,
         
         
     ],
