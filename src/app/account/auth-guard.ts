@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core'
 import { Store } from "@ngrx/store"
 import { AppState } from "store/app/state"
 import { AccountStateType } from 'store/app/account/state'
-import 'rxjs/add/Operator/do'
-import 'rxjs/add/Operator/map'
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class AuthGuard implements CanActivate {

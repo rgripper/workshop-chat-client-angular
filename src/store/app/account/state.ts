@@ -1,5 +1,5 @@
 import { ChatData } from "messaging/chat-data";
-import { User } from "messaging/User";
+import { User } from "messaging/user";
 
 export enum AccountStateType { Unknown, Unauthenticated, Authenticating, Authenticated }
 
