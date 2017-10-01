@@ -34,7 +34,7 @@ import { ChatDataHandler } from "store/app/ChatDataHandler";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppState } from 'store/app/state';
 
-import 'rxjs/add/Operator/take';
+import 'rxjs/add/operator/take';
 import { createNewHosts, createInputTransfer, removeNgStyles } from '@angularclass/hmr';
 import { environment } from 'environments/environment';
 

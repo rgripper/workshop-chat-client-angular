@@ -1,6 +1,6 @@
 import { ChatData } from "messaging/chat-data"
-import { User } from "messaging/User";
-import { Message } from "messaging/Message";
+import { User } from "messaging/user";
+import { Message } from "messaging/message";
 
 export interface ChatState {
     readonly users: ReadonlyArray<User>

@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 import { ChatAction, ChatActionType } from './chat/reducer';
 import { AppState } from './state';
 import { JoinResult, AbstractChatDataHandler } from "messaging/chat.service";
-import { Message } from "messaging/Message";
-import { User } from "messaging/User";
-import 'rxjs/add/Operator/first';
+import { Message } from "messaging/message";
+import { User } from "messaging/user";
+import 'rxjs/add/operator/first';
 
 @Injectable()
 export class ChatDataHandler extends AbstractChatDataHandler {

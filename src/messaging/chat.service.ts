@@ -2,7 +2,7 @@ import { Injectable, InjectionToken, Inject } from '@angular/core'
 import * as io from 'socket.io-client'
 import { Message } from './message'
 import { SubmittedMessage } from './submitted-message'
-import { User } from './User'
+import { User } from './user'
 import { ChatData } from "./chat-data"
 
 export abstract class AbstractChatDataHandler {
