@@ -1,9 +1,6 @@
-<section class="block--block-chat" [formGroup]="form">
-        
-  <button md-raised-button md-mini-fab type="button"><md-icon>queue_music</md-icon></button>
-  <button md-raised-button md-mini-fab type="button"><md-icon>camera_alt</md-icon></button>
+<section [formGroup]="form">
 
-  <input type="text" class="input__message-box" formControlName="messageText" mdInput placeholder="Message">
+  <input type="text" formControlName="messageText" mdInput placeholder="Message">
 
   <button md-raised-button color="primary" (click)="send()" md-fab type="button"><md-icon>send</md-icon></button>
 </section>

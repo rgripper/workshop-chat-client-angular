@@ -1,15 +1,22 @@
-.block--block-chat {
-  border-top: 1px solid #cccccc;
-  display: flex;
-  padding: 1rem;
-}
+:host {
+    display: block;
 
-.block--block-chat--block-item-input {
-  flex: 1;
-  margin: 0 1rem;
-}
+    > section {
+        display: flex;
+        flex-direction: row;
+    
+        > input {
+            width: 100%;
+            flex: 1 1 auto;
+            font-size: 1.25rem;
+            padding: 0.25rem;
+            margin: 0.5rem;
+        }
+    
+        > button {
+            flex: 0 0 auto;
+            margin: 0.5rem;
+        }
+    }
 
-.input__message-box {
-  margin: 0 1rem;
-  padding: 0 .5rem;
 }
