@@ -5,6 +5,7 @@ import { Store } from "@ngrx/store"
 import { AppState } from "store/app/state"
 import { AccountStateType } from 'store/app/account/state'
 import 'rxjs/add/Operator/do'
+import 'rxjs/add/Operator/map'
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,7 +13,8 @@ export class AuthGuard implements CanActivate {
 
     public canActivate(): Observable<boolean> {
         return this.store
-            .select(x => x.account.type == AccountStateType.Authenticated)
+            .do(x => console.log('canActivate', x.account))
+            .map(x => x.account.type == AccountStateType.Authenticated)
             .do(isAuthenticated => {
                 if (!isAuthenticated) {
                     this.router.navigate(['login'], {

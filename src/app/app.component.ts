@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
     
     constructor(store: Store<AppState>) {
-        store.subscribe(x => console.log(x));
+        //store.subscribe(x => console.log(x));
     }
     title = 'app';
 }

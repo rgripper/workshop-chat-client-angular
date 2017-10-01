@@ -8,8 +8,8 @@ export interface ChatState {
 }
 
 export const ChatState = {
-  Initial: {
-    users: [],
-    messages: []
-  } as ChatState
+    Initial: {
+        users: [],
+        messages: []
+    } as ChatState
 }

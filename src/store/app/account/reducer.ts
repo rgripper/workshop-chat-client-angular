@@ -5,34 +5,34 @@ import { ChatState } from "store/app/chat/state"
 import { ChatAction } from "store/app/chat/reducer"
 
 export enum AccountActionType {
-  StartAuthentication = 'AccountActionType.StartAuthentication',
-  SetAuthenticationResult = 'AccountActionType.SetAuthenticationResult',
-  Leave = 'AccountActionType.Leave'
+    StartAuthentication = 'AccountActionType.StartAuthentication',
+    SetAuthenticationResult = 'AccountActionType.SetAuthenticationResult',
+    Leave = 'AccountActionType.Leave'
 }
 
 export type AccountAction =
-  | {
-    type: AccountActionType.StartAuthentication
-  }
-  | {
-    type: AccountActionType.Leave
-  }
-  | {
-    type: AccountActionType.SetAuthenticationResult,
-    payload: { errorMessage: string, user?: undefined } | { user: User, errorMessage?: undefined }
-  }
+    | {
+        type: AccountActionType.StartAuthentication
+    }
+    | {
+        type: AccountActionType.Leave
+    }
+    | {
+        type: AccountActionType.SetAuthenticationResult,
+        payload: { errorMessage: string, user?: undefined } | { user: User, errorMessage?: undefined }
+    }
 
 export function accountStateReducer(state: AccountState = AccountState.Initial, action: AccountAction): AccountState {
-  switch (action.type) {
-    case AccountActionType.StartAuthentication:
-      return { type: AccountStateType.Authenticating };
-    case AccountActionType.SetAuthenticationResult:
-      return action.payload.user != undefined
-        ? { type: AccountStateType.Authenticated, user: action.payload.user }
-        : { type: AccountStateType.Unauthenticated, user: action.payload.errorMessage };
-    case AccountActionType.Leave:
-      return { type: AccountStateType.Unauthenticated, user: undefined }
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case AccountActionType.StartAuthentication:
+            return { type: AccountStateType.Authenticating };
+        case AccountActionType.SetAuthenticationResult:
+            return action.payload.user != undefined
+                ? { type: AccountStateType.Authenticated, user: action.payload.user }
+                : { type: AccountStateType.Unauthenticated, user: action.payload.errorMessage };
+        case AccountActionType.Leave:
+            return { type: AccountStateType.Unauthenticated, user: undefined }
+        default:
+            return state;
+    }
 }

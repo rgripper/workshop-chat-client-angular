@@ -12,6 +12,10 @@ export class UserListComponent {
   @Input() users: User[];
   @Input() currentUser: User;
 
+    getConnectedUsers() {
+        return this.users.filter(x => x.isConnected);
+    }
+
   getUserId (index: number, user: User) {
       return user.id;
   }

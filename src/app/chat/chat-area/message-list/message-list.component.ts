@@ -22,12 +22,11 @@ export class MessageListComponent implements OnChanges {
     @Input() currentUser: User;
     @Input() users: User[];
 
-    items: MessageListItemInput[];
+    items: MessageListItemInput[] = [];
 
     ngOnChanges(changes: SimpleChangeSet<MessageListComponent>) {
         if (changes.messages) {
             this.items = changes.messages.currentValue.map(x => this.createItemModel(x));
-            console.log(this.items);
         }
     }
 

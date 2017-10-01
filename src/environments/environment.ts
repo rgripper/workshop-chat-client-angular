@@ -4,6 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false,
-  hmr: false
+    production: false,
+    hmr: false,
+    chatServerUrl: 'localhost:35558',
+    useDummyChat: false
 };
