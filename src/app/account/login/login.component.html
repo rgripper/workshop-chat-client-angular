@@ -1,10 +1,8 @@
 <form (ngSubmit)="join()" [formGroup]="form">
   <div>
-    <md-input-container>
-      <input formControlName="userName" mdInput placeholder="Name" value="">
-    </md-input-container>
+    <input formControlName="userName" placeholder="Name" value="">
   </div>
   <div>
-    <button md-raised-button type="submit">Login</button>
+    <button type="submit">Login</button>
   </div>
 </form>

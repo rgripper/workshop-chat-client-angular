@@ -140,12 +140,6 @@
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.4.3.tgz#4527011a594967a396eff3c05ed15bd4c86d51b7"
 
-"@angular/material@^2.0.0-beta.10":
-  version "2.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-2.0.0-beta.11.tgz#9124a1f50f3eb7dc28640317ee1e875f71da753a"
-  dependencies:
-    tslib "^1.7.1"
-
 "@angular/platform-browser-dynamic@^4.3.6":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.4.3.tgz#e41ddd8252432775310eab5940cdd8df0618f084"

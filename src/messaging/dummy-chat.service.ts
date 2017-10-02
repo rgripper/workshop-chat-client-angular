@@ -18,7 +18,7 @@ export class DummyChatService {
 
     private readonly initialChatState = { messages: [], users: [] };
 
-    private static intervalToken: any;
+    private static intervalId: any;
 
     constructor(private handler: AbstractChatDataHandler) {
         this.setUpHandler(handler);
@@ -53,10 +53,10 @@ export class DummyChatService {
     }
 
     private setUpHandler(handler: AbstractChatDataHandler) {
-        if (DummyChatService.intervalToken) {
+        if (DummyChatService.intervalId) {
             return;
         }
-        DummyChatService.intervalToken = setInterval(() => {
+        DummyChatService.intervalId = setInterval(() => {
             if (this.currentUser == undefined) return;
 
             const otherUsers = this.chatState.users.filter(x => x != this.currentUser);
