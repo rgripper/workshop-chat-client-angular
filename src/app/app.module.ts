@@ -18,7 +18,6 @@ import { appRoutes } from "app/app.routes";
 import { AuthGuard } from "app/account/auth-guard";
 import { AppStoreModule } from "store/app/store.module";
 
-import { MdCardModule, MdButtonModule, MdInputModule, MdIconModule } from '@angular/material';
 import { AppService } from "store/app/AppService";
 import { ChatService, ChatServerUrlToken } from "messaging/chat.service";
 import { ChatDataHandler } from "store/app/ChatDataHandler";
@@ -44,7 +43,7 @@ import { ChatComponent } from './chat/chat.component';
         
     ],
     imports: [
-        MdIconModule,
+        
         BrowserModule,
         CommonModule,
         ReactiveFormsModule,
@@ -52,7 +51,7 @@ import { ChatComponent } from './chat/chat.component';
         StoreRouterConnectingModule,
         StoreModule,
         AppStoreModule,
-        BrowserAnimationsModule, MdButtonModule, MdInputModule, MdCardModule,
+        BrowserAnimationsModule,   
     ],
     providers: [
         AuthGuard,
