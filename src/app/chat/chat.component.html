@@ -1,3 +1,5 @@
-<p>
-  chat works!
+<p *ngIf="chat$ | async as chat">
+{{chat|json}}
+chat works!
 </p>
+
